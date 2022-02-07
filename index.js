@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const validateUser = require('./middlewares/UserMiddleware');
 const { createUser } = require('./controllers/UserController');
 
 const app = express();
@@ -15,4 +14,4 @@ app.get('/', (request, response) => {
 });
 
 app.route('/user')
-  .post(validateUser, createUser);
+  .post(createUser);

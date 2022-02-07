@@ -2,6 +2,7 @@ const errors = {
   displayNameLength: '"displayName" length must be at least 8 characters long',
   emailNotExists: '"email" is required',
   validEmail: '"email" must be a valid email',
+  passwordLength: '"password" length must be 6 characters long',
 };
 
 const isLengthLetterThan = (value, min) => (value.length < min);
@@ -13,7 +14,7 @@ const validateEmailMask = (email) => {
 };
 const validateIfExists = (value) => (!value);
 
-const validate = (displayName, email, _password, _image) => {
+const validate = (displayName, email, password, _image) => {
   const code = 400;
 
   switch (true) {
@@ -23,6 +24,8 @@ const validate = (displayName, email, _password, _image) => {
       return { code, message: errors.emailNotExists };
     case !validateEmailMask(email):
       return { code, message: errors.validEmail };
+    case validateIfExists(password):
+      return { code, message: 'ksdajdsak' };
     default:
       return {};
   }
