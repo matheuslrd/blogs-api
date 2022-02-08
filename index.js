@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const { createUser, userLogin, showUsers } = require('./controllers/UserController');
+const { createUser, userLogin, showUsers, showUserById } = require('./controllers/UserController');
 const { verifyToken } = require('./middlewares/verifyToken');
 
 const app = express();
@@ -13,6 +13,9 @@ app.listen(3000, () => console.log('ouvindo porta 3000!'));
 app.get('/', (request, response) => {
   response.send();
 });
+
+app.route('/user/:id')
+  .get(showUserById);
 
 app.route('/login')
   .post(userLogin);
