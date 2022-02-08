@@ -22,8 +22,6 @@ const userLogin = async (req, res) => {
 };
 
 const showUsers = async (_req, res) => {
-  const { authorization } = req.headers;
-
   const users = await UserService.showUsers();
 
   return res.status(200).json(users);

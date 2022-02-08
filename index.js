@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const { createUser, userLogin, showUsers } = require('./controllers/UserController');
+const { verifyToken } = require('./middlewares/verifyToken');
 
 const app = express();
 app.use(bodyParser.json());
@@ -17,5 +18,5 @@ app.route('/login')
   .post(userLogin);
 
 app.route('/user')
-  .get(showUsers)
+  .get(verifyToken, showUsers)
   .post(createUser);
