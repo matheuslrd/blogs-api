@@ -62,8 +62,15 @@ const showUsers = async () => {
   return users;
 };
 
+const showUserById = async (id) => {
+  const user = await User.findByPk(id);
+
+  return user;
+};
+
 module.exports = {
   createUser,
   userLogin,
   showUsers,
+  showUserById,
 };

@@ -15,7 +15,7 @@ app.get('/', (request, response) => {
 });
 
 app.route('/user/:id')
-  .get(showUserById);
+  .get(verifyToken, showUserById);
 
 app.route('/login')
   .post(userLogin);
