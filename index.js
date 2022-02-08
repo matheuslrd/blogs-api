@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const { createUser, userLogin } = require('./controllers/UserController');
+const { createUser, userLogin, showUsers } = require('./controllers/UserController');
 
 const app = express();
 app.use(bodyParser.json());
@@ -17,4 +17,5 @@ app.route('/login')
   .post(userLogin);
 
 app.route('/user')
+  .get(showUsers)
   .post(createUser);

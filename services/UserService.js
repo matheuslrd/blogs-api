@@ -41,11 +41,10 @@ const createUser = async (displayName, email, password, image) => {
 
 const userLogin = async (email, password) => {
   const { error } = userLoginScheme.validate({ email, password });
-  
-  const userInBD = await findUserByEmail(email);
 
   if (error) return { code: 400, message: error.message };
-  console.log(error);
+
+  const userInBD = await findUserByEmail(email);
   if (!userInBD) return { code: 400, message: 'Invalid fields' };
 
   const jwtConfig = {
@@ -57,7 +56,14 @@ const userLogin = async (email, password) => {
   return { code: 200, token };
 };
 
+const showUsers = async () => {
+  const users = await User.findAll();
+  
+  return users;
+};
+
 module.exports = {
   createUser,
   userLogin,
+  showUsers,
 };

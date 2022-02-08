@@ -13,9 +13,6 @@ const createUser = async (req, res) => {
 
 const userLogin = async (req, res) => {
   const { email, password } = req.body;
-  if (email === undefined) {
-    return res.status(400).json({ message: '"email" is required' });
-  }
 
   const login = await UserService.userLogin(email, password);
 
@@ -24,7 +21,16 @@ const userLogin = async (req, res) => {
   return res.status(login.code).json({ token: login.token });
 };
 
+const showUsers = async (_req, res) => {
+  const { authorization } = req.headers;
+
+  const users = await UserService.showUsers();
+
+  return res.status(200).json(users);
+};
+
 module.exports = {
   createUser,
   userLogin,
+  showUsers,
 };
