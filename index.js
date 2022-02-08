@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const { createUser, userLogin, showUsers, showUserById } = require('./controllers/UserController');
-const { createCategory } = require('./controllers/CategoryController');
+const { createCategory, showAllCategories } = require('./controllers/CategoryController');
 const { verifyToken } = require('./middlewares/verifyToken');
 
 const app = express();
@@ -26,4 +26,5 @@ app.route('/user')
   .post(createUser);
 
 app.route('/categories')
+  .get(verifyToken, showAllCategories)
   .post(verifyToken, createCategory);
