@@ -9,16 +9,17 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       postId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: { model: 'BlogPost', key: 'id' },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+      categoryId: {
+        type: Sequelize.INTEGER,
+        references: { model: 'Category', key: 'id' },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
     });
   },
   down: async (queryInterface, Sequelize) => {
