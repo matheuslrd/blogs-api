@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 
 const { createUser, userLogin, showUsers, showUserById } = require('./controllers/UserController');
 const { createCategory, showAllCategories } = require('./controllers/CategoryController');
-const { createPost } = require('./controllers/BlogPostController');
+const { createPost, showAllPosts } = require('./controllers/BlogPostController');
 const { verifyToken } = require('./middlewares/verifyToken');
 
 const app = express();
@@ -31,4 +31,5 @@ app.route('/categories')
   .post(verifyToken, createCategory);
 
 app.route('/post')
+  .get(verifyToken, showAllPosts)
   .post(verifyToken, createPost);
