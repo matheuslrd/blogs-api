@@ -46,13 +46,21 @@ const serialize = async (post) => {
 
 const showAllPosts = async () => {
   const posts = await BlogPost.findAll({ 
-    include: { 
-      model: User,
-      as: 'user',
-      attributes: {
-        exclude: ['password'],
+    include: [
+      { 
+        model: User,
+        as: 'user',
+        attributes: {
+          exclude: ['password'],
+        },
       },
-    },
+      {
+        model: Category,
+        as: 'categories',
+        through: {
+          attributes: [],
+        } },
+    ],
   });
 
   return posts;
