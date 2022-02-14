@@ -4,6 +4,7 @@ const Categories = (sequelize, DataTypes) => {
   },
   {
     timestamps: false,
+    tableName: 'Categories',
   });
 
   return CategoryModel;

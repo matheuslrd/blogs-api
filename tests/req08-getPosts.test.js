@@ -4,6 +4,7 @@ const shell = require('shelljs');
 const url = 'http://localhost:3000';
 
 describe('8 - Sua aplicação deve ter o endpoint GET `/post`', () => {
+  jest.setTimeout(10000);
   beforeEach(() => {
     shell.exec('npx sequelize-cli db:drop');
     shell.exec('npx sequelize-cli db:create && npx sequelize-cli db:migrate $');
