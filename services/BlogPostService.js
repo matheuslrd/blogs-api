@@ -37,12 +37,6 @@ const createPost = async (title, content, categoryIds, token) => {
   
   return post;
 };
-/* 
-const serialize = async (post) => {
-  const user = await User.findOne({ where: { id: post.id } });
-
-  return { ...post, user };
-}; */
 
 const showAllPosts = async () => {
   const posts = await BlogPost.findAll({ 
